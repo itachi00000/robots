@@ -3,8 +3,7 @@ import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import './App.css';
-// import { robots } from './robots';
-
+// import { robots } from './robots'
 
 class App extends React.Component {
   constructor(props) {
@@ -28,11 +27,9 @@ class App extends React.Component {
   }
 
   render() {
-    const {robots, searchfield } = this.state;
+    const { robots, searchfield } = this.state;
     const filteredRobots = robots.filter(robot => {
-      return robot.name
-        .toLowerCase()
-        .includes(searchfield.toLowerCase());
+      return robot.name.toLowerCase().includes(searchfield.toLowerCase());
     });
 
     if (!robots.length) {

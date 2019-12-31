@@ -1,32 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import './App.css';
+
+// components
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
-import './App.css';
+
+// data (if offline)
 import { robots } from './robots';
 
+// redux or react-redux related
 import { setSearchField } from '../action';
 
 const mapStateToProps = state => {
   return {
-    searchField: state.searchRobots.searchField
+    searchField: state.searchField
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  //
+  return {
+    onSearchChange: event => dispatch(setSearchField(event.target.value))
+  };
 };
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      robots: robots,
-      searchfield: ''
+      robots: robots
     };
-
-    this.onSearchChange = this.onSearchChange.bind(this);
   }
 
   componentDidMount() {
@@ -35,14 +39,11 @@ class App extends React.Component {
       .then(users => this.setState({ robots: users }));
   }
 
-  onSearchChange(event) {
-    this.setState({ searchfield: event.target.value });
-  }
-
   render() {
-    const { robots, searchfield } = this.state;
+    const { robots } = this.state;
+    const { searchField, onSearchChange } = this.props;
     const filteredRobots = robots.filter(robot => {
-      return robot.name.toLowerCase().includes(searchfield.toLowerCase());
+      return robot.name.toLowerCase().includes(searchField.toLowerCase());
     });
 
     if (!robots.length) {
@@ -51,7 +52,7 @@ class App extends React.Component {
       return (
         <div className="tc">
           <h1 className="f1">Robots</h1>
-          <SearchBox searchChange={this.onSearchChange} />
+          <SearchBox searchChange={onSearchChange} />
           <Scroll>
             <CardList robots={filteredRobots} />
           </Scroll>

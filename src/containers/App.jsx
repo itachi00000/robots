@@ -25,6 +25,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -44,6 +45,7 @@ class App extends React.Component {
     const { searchField, onSearchChange } = this.props;
     const filteredRobots = robots.filter(robot => {
       return robot.name.toLowerCase().includes(searchField.toLowerCase());
+
     });
 
     if (!robots.length) {
@@ -54,7 +56,9 @@ class App extends React.Component {
           <h1 className="f1">Robots</h1>
           <SearchBox searchChange={onSearchChange} />
           <Scroll>
-            <CardList robots={filteredRobots} />
+            <ErrorBoundry>
+              <CardList robots={filteredRobots} />
+            </ErrorBoundry>
           </Scroll>
         </div>
       );

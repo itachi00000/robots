@@ -54,7 +54,7 @@ class App extends React.Component {
     }
     return (
       <div className="tc">
-        <h1 className="f1">Robots</h1>
+        <h1 className="f1">Robots React</h1>
         <SearchBox searchChange={onSearchChange} />
         <Scroll>
           <ErrorBoundry>

@@ -6,3 +6,5 @@ export const setSearchField = text => {
     payload: text
   };
 };
+
+export const setGetRobots = () => {};

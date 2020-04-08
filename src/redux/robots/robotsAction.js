@@ -3,7 +3,7 @@ import {
   REQUEST_ROBOTS_PENDING,
   REQUEST_ROBOTS_SUCCESS,
   REQUEST_ROBOTS_FAILED
-} from './constants';
+} from './robotsActionTypes';
 
 export const setSearchField = text => {
   return {
@@ -16,7 +16,7 @@ export const requestRobots = () => dispatch => {
   dispatch({
     type: REQUEST_ROBOTS_PENDING
   });
-  fetch('https://jsonplaceholder.typicode.com/users')
+  fetch('http://localhost:5000/robots')
     .then(response => response.json())
     .then(data =>
       dispatch({

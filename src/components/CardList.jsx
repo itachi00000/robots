@@ -7,8 +7,8 @@ function CardList({ robots }) {
       {robots.map(user => {
         return (
           <Card
-            key={`user-${user.id}`}
-            id={user.id}
+            key={`user-${user.robots_id}`}
+            id={user.robots_id}
             name={user.name}
             email={user.email}
           />
@@ -16,6 +16,6 @@ function CardList({ robots }) {
       })}
     </div>
   );
-};
+}
 
 export default CardList;

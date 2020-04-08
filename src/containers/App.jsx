@@ -12,7 +12,7 @@ import ErrorBoundry from '../components/ErrorBoundry';
 // import robotData from './robots';
 
 // redux or react-redux related
-import { setSearchField, requestRobots } from '../action';
+import { setSearchField, requestRobots } from '../redux/robots/robotsAction';
 
 const mapStateToProps = state => {
   return {
@@ -50,12 +50,14 @@ class App extends React.Component {
     if (isPending) {
       return <h1 className="tc f1">Loading</h1>;
     }
-    if (!isPending && error) {
-      return <h1 className="tc f1 red">Error</h1>;
-    }
+
     return (
       <div className="tc">
-        <h1 className="f1">Robots React</h1>
+        {!isPending && error ? (
+          <h1 className="tc f1 red">ERROR! </h1>
+        ) : (
+          <h1 className="f1">Success! - Robots React</h1>
+        )}
         <SearchBox searchChange={onSearchChange} />
         <Scroll>
           <ErrorBoundry>

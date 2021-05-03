@@ -4,7 +4,7 @@ function Card({ name, email, id }) {
   return (
     <div className="bg-blue dib br3 pa3 ma2 grow">
       <img
-        src={`https://robohash.org/${id}?200x200`}
+        src={`https://robohash.org/${id}?200x200&set=set3`}
         alt={`robot ${id}`}
       />
       <div>
@@ -15,6 +15,6 @@ function Card({ name, email, id }) {
       </div>
     </div>
   );
-};
+}
 
 export default Card;

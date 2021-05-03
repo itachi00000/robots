@@ -6,7 +6,11 @@ import rootReducer from './rootReducer';
 
 // middlewares
 const logger = createLogger();
-const middlewares = [logger, thunk];
+const middlewares = [thunk]; // thunk first??
+
+if (process.env.NODE_ENV !== 'production') {
+  middlewares.push(logger);
+}
 
 // reducers
 // const rootReducer = combineReducers({ robots.searchRobots, robots.requestRobots });

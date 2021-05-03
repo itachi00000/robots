@@ -5,6 +5,9 @@ import {
   REQUEST_ROBOTS_FAILED
 } from './robotsActionTypes';
 
+// const localUrl = 'http://localhost:3000/robots'
+const url = 'https://jsonplaceholder.typicode.com/users';
+
 export const setSearchField = text => {
   return {
     type: CHANGE_SEARCH_FIELD,
@@ -16,7 +19,7 @@ export const requestRobots = () => dispatch => {
   dispatch({
     type: REQUEST_ROBOTS_PENDING
   });
-  fetch('http://localhost:5000/robots')
+  fetch(url)
     .then(response => response.json())
     .then(data =>
       dispatch({
